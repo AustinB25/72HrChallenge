@@ -8,7 +8,7 @@ namespace _72HrChallenge.Models
 {
     public class User
     {
-        [Key, Required]
+        [Key]
         public int UserId { get; set; }
         [Required]
         public string FirstName { get; set; }
