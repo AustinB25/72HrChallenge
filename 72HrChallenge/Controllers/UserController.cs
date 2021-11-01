@@ -44,5 +44,41 @@ namespace _72HrChallenge.Controllers
             }
             return NotFound();
         }
+        [HttpPut]
+        public async Task<IHttpActionResult> UpdateUser([FromUri] int id, [FromBody] User updatedUser)
+        {
+           if(id != updatedUser?.UserId)
+            {
+                return BadRequest("User Ids do not match");
+            }
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
+            User user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            user.FirstName = updatedUser.FirstName;
+            user.LastName = updatedUser.LastName;
+            user.UserName = updatedUser.UserName;
+            await _context.SaveChangesAsync();
+            return Ok("The user was updated");
+        }
+        public async Task<IHttpActionResult> DeleteUser([FromUri] int id)
+        {
+            User user = await _context.Users.FindAsync(id);
+            if(user == null)
+            {
+                return BadRequest("User was not found.");
+            }
+            _context.Users.Remove(user);
+            if(await _context.SaveChangesAsync() == 1)
+            {
+                return Ok("The user was deleted");
+            }
+            return InternalServerError();
+        }
     }
 }
