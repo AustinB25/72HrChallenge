@@ -34,5 +34,15 @@ namespace _72HrChallenge.Controllers
             List<User> users = await _context.Users.ToListAsync();
             return Ok(users);
         }
+        [HttpGet]
+        public async Task<IHttpActionResult> GetUserById([FromUri] int id)
+        {
+            User user = await _context.Users.FindAsync(id);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            return NotFound();
+        }
     }
 }
