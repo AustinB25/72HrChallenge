@@ -1,6 +1,7 @@
 ﻿using _72HrChallenge.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,6 +13,7 @@ namespace _72HrChallenge.Controllers
     public class UserController : ApiController
     {
         private readonly UserDbContext _context = new UserDbContext();
+        [HttpPost]
         public async Task<IHttpActionResult> CreateUser([FromBody] User model)
         {
             if(model == null)
@@ -25,6 +27,22 @@ namespace _72HrChallenge.Controllers
                 return Ok("User was created");
             }
             return BadRequest(ModelState);
+        }
+        [HttpGet]
+        public async Task<IHttpActionResult> GetAll()
+        {
+            List<User> users = await _context.Users.ToListAsync();
+            return Ok(users);
+        }
+        [HttpGet]
+        public async Task<IHttpActionResult> GetUserById([FromUri] int id)
+        {
+            User user = await _context.Users.FindAsync(id);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            return NotFound();
         }
     }
 }
