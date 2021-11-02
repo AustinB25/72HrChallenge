@@ -208,16 +208,30 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LikeController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\RepliesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111022102560_AnotherSmallPropChange.cs" />
+    <Compile Include="Migrations\202111022102560_AnotherSmallPropChange.Designer.cs">
+      <DependentUpon>202111022102560_AnotherSmallPropChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111022105228_RevertBackToLastMigration.cs" />
+    <Compile Include="Migrations\202111022105228_RevertBackToLastMigration.Designer.cs">
+      <DependentUpon>202111022105228_RevertBackToLastMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comments.cs" />
-    <Compile Include="Models\CommentsDbContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Like.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Replies.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -312,6 +326,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202111022102560_AnotherSmallPropChange.resx">
+      <DependentUpon>202111022102560_AnotherSmallPropChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111022105228_RevertBackToLastMigration.resx">
+      <DependentUpon>202111022105228_RevertBackToLastMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

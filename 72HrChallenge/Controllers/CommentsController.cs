@@ -12,22 +12,30 @@ namespace _72HrChallenge.Controllers
 {
     public class CommentsController : ApiController
     {
-        private readonly CommentsDbContext _context = new CommentsDbContext();
+        private readonly UserDbContext _context = new UserDbContext();
 
         [HttpPost]
         public async Task<IHttpActionResult> CreateComment([FromBody] Comments model)
         {
-            if (model == null)
+            if(model == null)
             {
-                return BadRequest("The comment request body is empty");
+                return BadRequest("Your post body cannot be empty!");
             }
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Comments.Add(model);
-                await _context.SaveChangesAsync();
-                return Ok("Comment was created");
+                return BadRequest(ModelState);
             }
-            return BadRequest(ModelState);
+            var postEntity = await _context.Posts.FindAsync(model.PostId);
+            if (postEntity is null)
+            {
+                return BadRequest("The target User with the Id of " + model.PostId + "does not exsist.");
+            }
+            postEntity.Comments.Add(model);
+            if (await _context.SaveChangesAsync() == 1)
+            {
+                return Ok($"You added a coment to the post '{postEntity.Title}' .");
+            }
+            return InternalServerError();
         }
 
         [HttpGet]
