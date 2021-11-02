@@ -218,6 +218,10 @@
     <Compile Include="Migrations\202111021537063_CreatedUserDatabase.Designer.cs">
       <DependentUpon>202111021537063_CreatedUserDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111021606484_TestMigration.cs" />
+    <Compile Include="Migrations\202111021606484_TestMigration.Designer.cs">
+      <DependentUpon>202111021606484_TestMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -322,6 +326,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111021537063_CreatedUserDatabase.resx">
       <DependentUpon>202111021537063_CreatedUserDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111021606484_TestMigration.resx">
+      <DependentUpon>202111021606484_TestMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
