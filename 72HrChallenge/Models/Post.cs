@@ -9,7 +9,7 @@ namespace _72HrChallenge.Models
 {
     public class Post
     {
-        [Key, ForeignKey("PostId")]
+        [Key]
         public int PostId { get; set; }
 
         [Required]
@@ -21,7 +21,7 @@ namespace _72HrChallenge.Models
         public virtual List<Comments> Comments { get; set; } = new List<Comments>();
 
         [Required]
-        [ForeignKey("UserId")]
+        
         public Guid UserId { get; set; }
     }
 }

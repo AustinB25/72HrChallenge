@@ -18,7 +18,7 @@ namespace _72HrChallenge.Models
         public string FullName { get { return FirstName + " " + LastName; } }
         [Required]
         public string UserName { get; set; }
-        [ForeignKey("PostId")]
+        
         public virtual List<Post> Posts { get; set; } = new List<Post>();     
     }
 }

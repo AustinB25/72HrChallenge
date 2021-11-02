@@ -14,7 +14,7 @@ namespace _72HrChallenge.Models
         [Required]
         public string CommentText { get; set; }
         [Required]
-        [ForeignKey(nameof(Post.PostId))]
+       
         public Guid PostId { get; set; }
 
        // public virtual List<Replies> {get, set,} = new List<Replies>
