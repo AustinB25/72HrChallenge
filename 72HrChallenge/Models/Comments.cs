@@ -15,7 +15,7 @@ namespace _72HrChallenge.Models
         public string CommentText { get; set; }
         [Required]
        
-        public Guid PostId { get; set; }
+        public int PostId { get; set; }
 
        // public virtual List<Replies> {get, set,} = new List<Replies>
         

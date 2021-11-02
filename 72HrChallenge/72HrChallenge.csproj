@@ -214,13 +214,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111021537063_CreatedUserDatabase.cs" />
-    <Compile Include="Migrations\202111021537063_CreatedUserDatabase.Designer.cs">
-      <DependentUpon>202111021537063_CreatedUserDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111021606484_TestMigration.cs" />
-    <Compile Include="Migrations\202111021606484_TestMigration.Designer.cs">
-      <DependentUpon>202111021606484_TestMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202111021622348_changedCommentsTable.cs" />
+    <Compile Include="Migrations\202111021622348_changedCommentsTable.Designer.cs">
+      <DependentUpon>202111021622348_changedCommentsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -324,11 +320,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111021537063_CreatedUserDatabase.resx">
-      <DependentUpon>202111021537063_CreatedUserDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111021606484_TestMigration.resx">
-      <DependentUpon>202111021606484_TestMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111021622348_changedCommentsTable.resx">
+      <DependentUpon>202111021622348_changedCommentsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
