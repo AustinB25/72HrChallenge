@@ -16,17 +16,24 @@ namespace _72HrChallenge.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> CreatePost([FromBody] Post modelPost)
         {
-            if (modelPost == null)
+            if(modelPost == null)
             {
-                return BadRequest("Your request body cannot be empty");
+                return BadRequest("Your post body cannot be empty!");
             }
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Posts.Add(modelPost);
-                await _context.SaveChangesAsync();
-                return Ok("Post was created");
+                return BadRequest(ModelState);
             }
-            return BadRequest(ModelState);
+            var userEntity = await _context.Users.FindAsync(modelPost.UserId);
+            if(userEntity is null)
+            {
+                return BadRequest("The target User with the Id of "+ modelPost.UserId + "does not exsist.");
+            }
+            if (await _context.SaveChangesAsync() == 1)
+            {
+                return Ok($"{userEntity.UserName} just made a post.");
+            }
+            return InternalServerError();
         }
         [HttpGet]
         public async Task<IHttpActionResult> GetAll()
