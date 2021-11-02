@@ -13,11 +13,10 @@ namespace _72HrChallenge.Models
         public int CommentId { get; set; }
         [Required]
         public string CommentText { get; set; }
-        [Required]
-       
-        public int PostId { get; set; }
+        [Required]       
+        public int PostId { get; set; }        
 
-       // public virtual List<Replies> {get, set,} = new List<Replies>
+        public virtual List<Replies> Replies { get; set; } = new List<Replies>();
         
     }
 }
