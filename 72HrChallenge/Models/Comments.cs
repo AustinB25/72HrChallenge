@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,7 +14,8 @@ namespace _72HrChallenge.Models
         [Required]
         public string CommentText { get; set; }
         [Required]
-        public Guid CommentUserId { get; set; }
+        [ForeignKey(nameof(Post.PostId))]
+        public Guid PostId { get; set; }
 
        // public virtual List<Replies> {get, set,} = new List<Replies>
         

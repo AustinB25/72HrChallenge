@@ -1,8 +1,11 @@
-﻿using System;
+﻿using _72HrChallenge.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace _72HrChallenge.Controllers
@@ -19,7 +22,7 @@ namespace _72HrChallenge.Controllers
             }
             if (ModelState.IsValid)
             {
-                _context.Users.Add(modelPost);
+                _context.Posts.Add(modelPost);
                 await _context.SaveChangesAsync();
                 return Ok("Post was created");
             }
@@ -28,13 +31,13 @@ namespace _72HrChallenge.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetAll()
         {
-            List<Post> posts = await _context.Users.ToListAsync();
+            List<Post> posts = await _context.Posts.ToListAsync();
             return Ok(posts);
         }
         [HttpGet]
         public async Task<IHttpActionResult> GetPostById([FromUri] int id)
         {
-            Post post = await _context.Post.FindAsync(id);
+            Post post = await _context.Posts.FindAsync(id);
             if (post != null)
             {
                 return Ok(post);
@@ -42,9 +45,9 @@ namespace _72HrChallenge.Controllers
             return NotFound();
         }
         [HttpPut]
-        public async Task<IHttpActionResult> UpdatePost([FromUri] int id, [FromBody] User updatedPost)
+        public async Task<IHttpActionResult> UpdatePost([FromUri] int id, [FromBody] Post updatedPost)
         {
-            if (id != updatedpost?.PostId)
+            if (id != updatedPost?.PostId)
             {
                 return BadRequest("User Ids do not match");
             }
@@ -52,25 +55,25 @@ namespace _72HrChallenge.Controllers
             {
                 return NotFound();
             }
-            Post post = await _context.Users.FindAsync(id);
+            Post post = await _context.Posts.FindAsync(id);
             if (post == null)
             {
                 return NotFound();
             }
-            post.Title = updatedpost.Title;
-            post.Text = updatedpost.Text;
+            post.Title = updatedPost.Title;
+            post.Text = updatedPost.Text;
             await _context.SaveChangesAsync();
             return Ok("The post was updated");
         }
         [HttpDelete]
         public async Task<IHttpActionResult> DeletePost([FromUri] int id)
         {
-            Post post = await _context.Post.FindAsync(id);
+            Post post = await _context.Posts.FindAsync(id);
             if (post == null)
             {
                 return BadRequest("Post was not found.");
             }
-            _context.Post.Remove(user);
+            _context.Posts.Remove(post);
             if (await _context.SaveChangesAsync() == 1)
             {
                 return Ok("The post was deleted");

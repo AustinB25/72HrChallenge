@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -17,6 +18,7 @@ namespace _72HrChallenge.Models
         public string FullName { get { return FirstName + " " + LastName; } }
         [Required]
         public string UserName { get; set; }
-        //public virtual List<Posts> {get, set,} = new List<Posts>        
+        [ForeignKey("PostId")]
+        public virtual List<Post> Posts { get; set; } = new List<Post>();     
     }
 }
