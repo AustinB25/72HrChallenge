@@ -11,17 +11,12 @@ namespace _72HrChallenge.Models
     {
         [Key]
         public int PostId { get; set; }
-
         [Required]
         public string Title { get; set; }
-
         [Required]
         public string Text { get; set; }
-
         public virtual List<Comments> Comments { get; set; } = new List<Comments>();
-
-        [Required]
-        
+        public virtual List<Like> Likes { get; set; } = new List<Like>();
         public int UserId { get; set; }
     }
 }

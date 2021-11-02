@@ -7,13 +7,13 @@ namespace _72HrChallenge.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class changedCommentsTable : IMigrationMetadata
+    public sealed partial class RevertBackToLastMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changedCommentsTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RevertBackToLastMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202111021622348_changedCommentsTable"; }
+            get { return "202111022105228_RevertBackToLastMigration"; }
         }
         
         string IMigrationMetadata.Source
