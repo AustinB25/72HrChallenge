@@ -12,7 +12,7 @@ namespace _72HrChallenge.Controllers
 {
     public class CommentsController : ApiController
     {
-        private readonly CommentsDbContext _context = new CommentsDbContext();
+        private readonly UserDbContext _context = new UserDbContext();
 
         [HttpPost]
         public async Task<IHttpActionResult> CreateComment([FromBody] Comments model)
