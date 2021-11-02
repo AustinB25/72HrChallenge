@@ -22,6 +22,6 @@ namespace _72HrChallenge.Models
 
         [Required]
         
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
     }
 }

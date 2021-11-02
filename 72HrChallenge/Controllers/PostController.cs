@@ -29,6 +29,7 @@ namespace _72HrChallenge.Controllers
             {
                 return BadRequest("The target User with the Id of "+ modelPost.UserId + "does not exsist.");
             }
+            userEntity.Posts.Add(modelPost);
             if (await _context.SaveChangesAsync() == 1)
             {
                 return Ok($"{userEntity.UserName} just made a post.");
