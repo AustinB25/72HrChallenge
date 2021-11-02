@@ -66,5 +66,19 @@ namespace _72HrChallenge.Controllers
             await _context.SaveChangesAsync();
             return Ok("The user was updated");
         }
+        public async Task<IHttpActionResult> DeleteUser([FromUri] int id)
+        {
+            User user = await _context.Users.FindAsync(id);
+            if(user == null)
+            {
+                return BadRequest("User was not found.");
+            }
+            _context.Users.Remove(user);
+            if(await _context.SaveChangesAsync() == 1)
+            {
+                return Ok("The user was deleted");
+            }
+            return InternalServerError();
+        }
     }
 }
